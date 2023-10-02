@@ -1,6 +1,7 @@
 from django.urls import path
+from .views import solicitar
 
 
 urlpatterns = [
-    # path('cadastro', cadastro, name='cadastro'),
+    path('solicitar', solicitar, name='solicitar'),
 ]
