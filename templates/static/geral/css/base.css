@@ -11,6 +11,44 @@
     color: white
 }
 
+.nav-dark {
+    background-color: var(--main-color);
+}
+
+.nav-dark a {
+    color: #fff;
+    opacity: .7;
+}
+
+.nav-dark .nb-brand {
+    align-items: center;
+    opacity: 1;    
+    width: 120px;
+}
+
+.nav-dark .nb-brand img{
+    width: 20%;
+}
+
+.nav-dark a:hover {
+    color: #fff;
+    opacity: 1;
+}
+
+.menu-sair {
+    background-color: transparent;
+    text-align: end;
+    padding-right: .5rem;
+}
+
+.menu-sair li a {
+    padding-right: 0;
+}
+
+.menu-sair li a:hover {
+    background-color: transparent;
+}
+
 .font-destaque {
     color: var(--light-color);
     font-size: 40px;
@@ -20,20 +58,42 @@
     background-color: rgba(255,255,255,0.05);
     border: 1px solid var(--differential-color);
     padding: 7px;
-    width: 50%;
+    /* width: 50%; */
 }
 
 .w100 {
-    width: 100%;
+    /* width: 100%; */
 }
 
 .btn-default {
     background-color: var(--light-color);
     color: black;
-    width: 15%;
+    /* width: 15%; */
+    /* width: 100px; */
     padding: 10px;
     border: none;
     border-radius: 10px;
+    opacity: .8;
+}
+
+.btn-default-secondary {
+    color: white;
+    padding: 10px;
+    border: 1px solid var(--light-color);
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.btn-default:hover {
+    opacity: 1;
+}
+
+.btn-default-secondary:hover {
+    background-color: var(--light-color);
+    color: black;
+    border: none;
 }
 
 .font-destaque-secundaria {

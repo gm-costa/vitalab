@@ -15,46 +15,52 @@
                 <div class="alert {{ message.tags }} mt-3">{{ message }}</div>
             {% endfor %}
         {% endif %}
-        <form action="{% url 'cadastro' %}" method="POST">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <img src="{% static 'geral/img/logo.png' %}" alt="logo">
-                </div>
-                <div class="col-md-9">
-                    <div class="mb-3">
-                        <label for="primeiro_nome">Primeiro nome</label>
-                        <input type="text" class="input-default form-control" id="primeiro_nome" name="primeiro_nome">
+        <div class="w-50">
+            <form action="{% url 'cadastro' %}" method="POST">
+                {% csrf_token %}
+                <div class="row align-items-center">
+                    <div class="col-md-4">
+                        <img src="{% static 'geral/img/logo.png' %}" alt="logo" class="w-100">
                     </div>
-                    <div class="mb-3">
-                        <label for="ultimo_nome">Último nome</label>
-                        <input type="text" class="input-default form-control" id="ultimo_nome" name="ultimo_nome">
-                    </div>
-                </div>
-            </div>
-            <h3>VitaLab</h3>
-            <div class="row mt-3">
-                <div class="col-md-4">
-                    <div class="mb-3">
-                        <label>Username</label>
-                        <input type="text" class="input-default w100 form-control" name="username">
-                    </div>
-                    <div class="mb-3">
-                        <label>Senha</label>
-                        <input type="text" class="input-default w100 form-control" name="senha">
+                    <div class="col-md-8">
+                        <div class="mb-3">
+                            <label for="primeiro_nome">Primeiro nome</label>
+                            <input type="text" class="input-default form-control" id="primeiro_nome" name="primeiro_nome" value={{primeiro_nome}}>
+                        </div>
+                        <div class="mb-3">
+                            <label for="ultimo_nome">Último nome</label>
+                            <input type="text" class="input-default form-control" id="ultimo_nome" name="ultimo_nome" value={{ultimo_nome}}>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="mb-3">
-                        <label>E-mail</label>
-                        <input type="text" class="input-default w100 form-control" name="email">
+                <h3>VitaLab</h3>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label>Username</label>
+                            <input type="text" class="input-default w100 form-control" name="username" value={{username}}>
+                        </div>
+                        <div class="mb-3">
+                            <label>Senha</label>
+                            <input type="password" class="input-default w100 form-control" name="senha" value={{senha}}>
+                        </div>
                     </div>
-                    <div class="mb-4">
-                        <label>Confirmar senha</label>
-                        <input type="text" class="input-default w100 form-control" name="confirmar_senha">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label>E-mail</label>
+                            <input type="text" class="input-default w100 form-control" name="email" value={{email}}>
+                        </div>
+                        <div class="mb-4">
+                            <label>Confirmar senha</label>
+                            <input type="password" class="input-default w100 form-control" name="confirmar_senha" value={{confirmar_senha}}>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <input type="submit" class="btn-default">
-        </form>
+                <div class="d-flex justify-content-between align-items-center">
+                    <input type="submit" class="btn-default w-25">
+                    <a href="{% url "login" %}" class="btn-default-secondary w-25">Logar</a>
+                </div>
+            </form>
+        </div>
     </div>
 {% endblock %}

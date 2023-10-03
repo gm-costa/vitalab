@@ -3,5 +3,5 @@ from .views import solicitar
 
 
 urlpatterns = [
-    path('solicitar', solicitar, name='solicitar'),
+    path('solicitar', solicitar, name='solicitar_exame'),
 ]

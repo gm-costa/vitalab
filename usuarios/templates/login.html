@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block 'title' %}Login usuário{% endblock 'title' %}
+
 {% block 'head' %}
     <link href="{% static 'usuarios/css/style.css' %}" rel="stylesheet">
 {% endblock 'head' %}
@@ -16,7 +17,7 @@
                 <div class="alert {{ message.tags }} mt-3">{{ message }}</div>
             {% endfor %}
         {% endif %}
-        <div class="w-75">
+        <div class="w-50">
             <form action="{% url 'login' %}" method="POST">{% csrf_token %}
                 <div class="mb-3">
                     <label class="form-label">Username</label>
@@ -24,9 +25,12 @@
                 </div>
                 <div class="mb-4">
                     <label class="form-label">Senha</label>
-                    <input type="text" class="input-default form-control" name="senha">
+                    <input type="password" class="input-default form-control" name="senha">
                 </div>
-                <input type="submit" class="btn-default" value="Logar">
+                <div class="d-flex justify-content-between align-items-center">
+                    <input type="submit" class="btn-default w-25" value="Acessar">
+                    <a href="{% url "cadastro" %}" class="btn-default-secondary w-25">Cadastre-se</a>
+                </div>
             </form>
         </div>
     </div>

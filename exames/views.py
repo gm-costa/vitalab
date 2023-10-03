@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url='/usuario/login/')
 def solicitar(request):
-    return HttpResponse('Solcitar exame')
+    return render(request, 'solicitar_exame.html')
