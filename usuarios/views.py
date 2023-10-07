@@ -23,7 +23,7 @@ def cadastro(request):
             return render(request, 'cadastro.html', request.POST.dict())
         
         if len(senha) < 6:
-            messages.add_message(request, messages.ERROR, 'A senha deve ter 6 (seis) carecteres ou mais!')
+            messages.add_message(request, messages.ERROR, 'A senha deve ter 6 (seis) caracteres ou mais!')
             return render(request, 'cadastro.html', request.POST.dict())
         
         try:

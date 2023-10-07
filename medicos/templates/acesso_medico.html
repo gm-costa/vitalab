@@ -1,0 +1,41 @@
+{% extends "bases/base.html" %}
+{% load static %}
+
+{% block 'title' %}Acesso médico{% endblock 'title' %}
+
+{% block 'head' %}
+    <link href="{% static 'exames/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'exames/css/gerenciar_pedidos.css' %}" rel="stylesheet">
+{% endblock 'head' %}
+
+{% block 'conteudo' %}
+
+    <div class="container">
+        <div class="mt-5">
+            <table class="w-50">
+                <thead class="text-center">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Exame</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pedido in pedidos %}
+                        {% for exame in pedido.exames.all %}
+                            <tr class="linha-tabela">
+                                <td>{{exame.exame.nome}}</td>
+                                {% if exame.resultado %}
+                                    <td class="text-center">
+                                        <a class="btn-secundario text-decoration-none px-3" href="{{exame.resultado.url}}">Ver exame</a>
+                                    </td>
+                                {% else %}
+                                    <td class="text-center">Em análise</td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock 'conteudo' %}

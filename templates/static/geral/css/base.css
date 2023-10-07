@@ -4,11 +4,16 @@
     --light-color: #6DE6EE;
     --contrast-color: #f4c96b;
     --differential-color: #066668;
-
 }
 
 * {
     color: white
+}
+
+/*  config pessoais */
+
+body {
+    height: 100vh;
 }
 
 .nav-dark {
@@ -49,6 +54,8 @@
     background-color: transparent;
 }
 
+/* fim config pessoais */
+
 .font-destaque {
     color: var(--light-color);
     font-size: 40px;
@@ -76,6 +83,8 @@
     opacity: .8;
 }
 
+/*  config pessoal */
+
 .btn-default-secondary {
     color: white;
     padding: 10px;
@@ -95,6 +104,8 @@
     color: black;
     border: none;
 }
+
+/*  fim config pessoal */
 
 .font-destaque-secundaria {
     color: var(--light-color);

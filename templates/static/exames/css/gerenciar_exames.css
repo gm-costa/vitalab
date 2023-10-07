@@ -1,0 +1,10 @@
+.sub-card {
+    background-color: var(--dark-color);
+    padding: 20px;
+}
+
+.bg-fundo {
+    /* background-color: #DFFD56; */
+    /* background-color: #DFFD81; */
+    background-color: #dd4c53;
+}

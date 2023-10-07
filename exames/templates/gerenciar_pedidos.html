@@ -1,0 +1,51 @@
+{% extends "bases/base.html" %}
+{% load static %}
+
+{% block 'title' %}Gerenciar pedidos{% endblock 'title' %}
+
+{% block 'head' %}
+    <link href="{% static 'exames/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'exames/css/gerenciar_pedidos.css' %}" rel="stylesheet">
+{% endblock 'head' %}
+
+{% block 'conteudo' %}
+
+    <div class="container mt-5">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {{ message.tags }} mt-3 py-2 text-center">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        <div class="card card-view">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Solicitação</th>
+                        <th>Data</th>
+                        <th>Exames</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pedido in pedidos_exames %}
+                        <tr class="linha-tabela">
+                            <td>{{pedido.id}}</td>
+                            <td>{{pedido.data}}</td>
+                            <td>
+                                <select class="form-select">
+                                    {% for exame in pedido.exames.all %}
+                                        <option class="text-black" value="">{{exame.exame.nome}}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                            <td>
+                                <a href="{% url "cancelar_pedido" pedido.id %}"  class="btn btn-danger {% if not pedido.agendado %} disabled {% endif %}">Cancelar</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock 'conteudo' %}

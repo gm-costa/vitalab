@@ -9,11 +9,68 @@
 
 {% block 'conteudo' %}
 
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert {{ message.tags }} mt-3 py-2 w-50 mx-auto text-center">{{ message }}</div>
-        {% endfor %}
-    {% endif %}
-    <h1>Solicitar exame</h1>
+    <div class="container">
+        <div class="mt-5">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert {{ message.tags }} mt-3 py-2 w-50 mx-auto text-center">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            <div class="row gap-5">
+                <div class="col-md">
+                    <h3 class="font-destaque">Solicitar exames</h3>
+                    <form action="{% url "solicitar_exame" %}" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            <label for="" class="form-label">Selecione os exames para realizar</label>
+                            <select class="select form-select bg-select" name="exames" multiple>
+                                {% for exame in tipos_exames %}
+                                    {% if not exame.disponivel %}
+                                        <option class="opt text-danger" value="{{exame.id}}" disabled>{{exame}} - Indisponível</option>
+                                    {% else %}
+                                        <option class="opt" value="{{exame.id}}">{{exame}} - R$ {{exame.preco|floatformat:"2g"}}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <input  type="submit" class="btn-default w-50"  name="ultimo_nome" value="Solicitar exames">
+                    </form>
+                </div>
+                <div class="col-md card">
+                    {% if solicitacao_exames %}
+                        {% for exame in solicitacao_exames %}
+                            <div class="fs-3 fw-bold">
+                                {% if exame.disponivel %}
+                                    <img src="{% static 'exames/img/check.png' %}">
+                                {% else %}
+                                    <img src="{% static 'exames/img/exit.png' %}">
+                                {% endif %}
+                                {{exame.nome}}
+                                <span class="previa-preco">{{exame.preco|floatformat:"2g"}}</span>
+                            </div>
+                        {% endfor %}
+                        
+                        <hr style="color: white;">
+
+                        <div>
+                            <label>Total: </label><label class="previa-preco">{{preco_total|floatformat:"2g"}}</label>
+                        </div>
+
+                        <h5 class="my-3">Data: {{data_exame}}</h5>
+
+                        <form action="{% url "fechar_pedido" %}" method="POST">
+                            {% csrf_token %}
+                            {% for exame in solicitacao_exames  %}
+                                <input type="hidden" value="{{exame.id}}" name="exames-solicitados">
+                            {% endfor %}
+                            <button type="submit" class="btn-secundario">Fechar pedido</button>
+                        </form>
+                    {% else %}
+                        <h3 class="text-center">Nenhum exame selecionado</h3>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock 'conteudo' %}
