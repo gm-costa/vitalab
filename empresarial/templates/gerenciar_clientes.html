@@ -1,0 +1,60 @@
+{% extends "bases/base.html" %}
+{% load static %}
+
+{% block 'title' %}Gerenciar clientes{% endblock 'title' %}
+
+{% block 'head' %}
+    <link href="{% static 'exames/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'exames/css/gerenciar_pedidos.css' %}" rel="stylesheet">
+{% endblock 'head' %}
+
+{% block 'conteudo' %}
+
+    <div class="container">
+        <div class="mt-5">
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert {{ message.tags }} mt-3 py-2 text-center">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            <form action="{% url "gerenciar_clientes" %}" method="GET">
+                <div class="row gap-2 mb-4">
+                    <div class="col-md-4">
+                        <label class="form-label" for="nome">Nome</label>
+                        <input type="text" class="form-control" name="nome" id="nome" value="{% if nome_completo %}{{nome_completo}}{% endif %}">
+                    </div>
+                    <div class="col-md-5">
+                        <label class="form-label" for="email">E-mail</label>
+                        <input type="text" class="form-control" name="email" id="email" value="{% if email %}{{email}}{% endif %}">
+                    </div>
+                    <div class="col-md position-relative">
+                        <a href="{% url "gerenciar_clientes" %}" class="position-absolute bottom-0 pb-2"><i class="bi bi-arrow-counterclockwise"></i></a>
+                        <input type="submit" class="btn-default px-4 py-2 position-absolute bottom-0 ms-5">
+                    </div>
+                </div>
+            </form>
+
+            <div class="card card-view">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>CPF</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cliente in clientes %}
+                            <tr class="linha-tabela">
+                                <td class="text-start"><a href="{% url "cliente" cliente.id %}" class="text-decoration-none">{{cliente.get_full_name}}</a></td>
+                                <td>{{cliente.email}}</td>
+                                <td></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock 'conteudo' %}

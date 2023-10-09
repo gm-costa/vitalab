@@ -68,21 +68,24 @@ body {
     /* width: 50%; */
 }
 
-.w100 {
-    /* width: 100%; */
+.btn-default,
+.btn-secundario {
+    color: black;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    opacity: .8;
+    transition: .3s;
 }
 
 .btn-default {
     background-color: var(--light-color);
-    color: black;
-    /* width: 15%; */
-    /* width: 100px; */
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    opacity: .8;
 }
 
+.btn-secundario {
+    background-color: #838FFF;
+}
 /*  config pessoal */
 
 .btn-default-secondary {
@@ -95,7 +98,8 @@ body {
     transition: .3s;
 }
 
-.btn-default:hover {
+.btn-default:hover,
+.btn-secundario:hover {
     opacity: 1;
 }
 

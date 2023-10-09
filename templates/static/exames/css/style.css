@@ -28,19 +28,6 @@ body {
     float: right;
     font-weight: bold;
 }
-/* 
-.tamanho-2 {
-    width: 50%;
-} */
-
-.btn-secundario {
-    background-color: #838FFF;
-    color: black;
-    padding: 10px;
-    font-weight: bold;
-    border: none;
-    border-radius: 10px;
-}
 
 .btn-secundario-outline {
     background-color: transparent;
